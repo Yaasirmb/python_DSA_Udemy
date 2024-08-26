@@ -79,3 +79,68 @@ def nonDominantTerms(n):
     for k in range(n):
         print(k)
 
+
+
+# Space Complexity
+def sum(n):
+    
+    """
+        This function will take O(n) space complexity as since the function is recursive,
+        each iteration will call itself and is reliant on the previous call. Thus the function 
+        calls will be in the stack simultaniously.
+    """
+    if n<=0:
+        return 0
+    return n + sum(n-1)
+
+# sum(3)
+
+def pariSumSequence(n):
+ 
+    total = 0 
+    for i in range(n):
+        total = total + pairSum(i, i+1)
+    return total
+
+def pairSum(a,b):
+    """
+        This function will take O(1) space complexity. Althought there are O(n) calls of the 
+        function, it will only take O(1) space complexity.This is because the function calls 
+        will not exist simultaniously in the stack.
+    """
+    return a+b
+
+# print(pariSumSequence(4))
+
+# Add vs Multiply Time complexities
+
+def print_items(a,b):
+    """
+        This will take a time complexity of O(a+b). This is because while at first glance you may
+        be tempted to say it's O(n) + O(n) = O(2n) time complexity, this is wrong. While it may be possible for such a case,
+        that is a specific case. So what happens when a != b? Then both a & b can not = n. Thus we look at the variable indeipendently 
+        and add their time complexities. So we get O(a+b) time complexity. Note it can not be simplified further than that.
+    
+        If your algorithm is in the form of "do this, when complete then do that" you add the time complexities.
+    
+    """
+    for i in range(a):
+        print(i)
+
+    for j in range(b):
+        print(j)
+
+# You could add a decorator here if you want to run both functions or just rename them
+def print_items(a,b):
+    """
+        Now this function will take O(a*b) time complexity. This is because for each iteration of the first loop, we run the nested loop.
+        In this case we multiply the 2 time complexities.
+
+        If your algorithm is in the form of "do this for each time you do that", then you multiply their time complexities.
+
+    """
+    for i in range(a):
+        print(i)
+
+    for j in range(b):
+        print(j)
